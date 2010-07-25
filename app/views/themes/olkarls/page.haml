@@ -1,0 +1,23 @@
+= theme_partial 'breadcrumb'
+%section#content
+  ~ @page.to_html
+
+  - unless @page.pages.empty?
+    #pages
+      - @page.pages.each do |page|
+        = theme_partial 'summary', :locals => { :article => page, :heading => :h2 }
+  
+  - unless @page.articles.empty?
+    #articles
+      - @page.articles.each do |article|
+        = theme_partial 'summary', :locals => { :article => article, :heading => :h2 }
+
+  - unless @page.categories.empty?
+    .categories
+      Filed under
+      - @page.categories.each do |category|
+        %a{ :href => category.abspath }= category.heading
+
+%aside#sidebar
+  = theme_partial 'branding'
+  .intro= theme_partial 'intro'

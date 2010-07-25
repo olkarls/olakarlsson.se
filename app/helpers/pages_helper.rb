@@ -2,6 +2,20 @@
 
 Presto.helpers do
   
+  def body_classes
+    classes = []
+    classes << 'home' if request.path == "/"
+    classes << @page.template if @page and @page.template
+    classes << "page-#{@page.heading.downcase.gsub(/\s/, '-')}" if @page
+    classes
+  end
+  
+  def widont(string)
+    words = string.split(" ")
+    last_word = words.pop
+    words.join(" ") + "&nbsp;" + last_word
+  end
+  
   def theme_partial(partial, options={})
     partial "themes/#{Nesta::Config.theme}/#{partial}", options
   end

@@ -1,0 +1,36 @@
+!!!
+%html{ :lang => "en", "xml:lang" => "en", :xmlns => 'http://www.w3.org/1999/xhtml' }
+  %head
+    %meta{ "http-equiv" => "content-type", "content" => "text/html; charset=utf-8" }
+    %meta{:content => "width=960; initial-scale=0.75; user-scalable=1;", :name => "viewport"}
+    - if @description
+      %meta{ "name" => "description", "content" => @description }
+    - if @keywords
+      %meta{ "name" => "keywords", "content" => @keywords }
+    %title= @title
+    %link{ :href => "/css/code.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
+   
+    %link{ :href => "/css/screen.css", :media => "screen", :rel => "stylesheet", :type => "text/css" }
+    %link{ :href => "/feed", :rel => "alternate", :type => "application/atom+xml" }
+    %link{:href => "/images/favicon.png", :rel => "shortcut icon"}
+    
+    
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"}
+
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"}
+    %script{:src => "/javascripts/application.js"}
+    
+    
+  %body{ :class => body_classes }
+    %section#top-wrap
+      %header
+        = theme_partial 'nav'
+      %section#wrapper
+        = yield
+    %section#middle-wrap
+      %section#middle
+        = yield_content :middle
+    %footer
+      %section.container
+        %section.copyright &copy; 2006 - 2010 Ola Karlsson
+    = theme_partial('analytics')

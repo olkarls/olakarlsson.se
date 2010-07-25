@@ -1,0 +1,7 @@
+%section.breadcrumb
+  %a{ :href => "/" } Home
+  &raquo;
+  - if @page.parent
+    %a{ :href => @page.parent.abspath }= @page.parent.heading
+    &raquo;
+  = @page.heading

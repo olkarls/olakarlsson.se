@@ -1,0 +1,26 @@
+= theme_partial "breadcrumb"
+
+%section#meta
+  - if @page.date
+    = format_date(@page.date)
+  - unless @page.categories.empty?
+    .categories
+      Filed under
+      - @page.categories.each do |category|
+        %a{ :href => category.abspath }= category.heading
+      
+%section#content
+
+  ~ @page.to_html
+
+
+
+  - if @page.metadata.categories.split(",").map{|c| c.downcase.strip}.include?('feature')
+    = theme_partial 'about'
+  = #theme_partial 'social'
+  = theme_partial 'feed', :locals => { :title => @site_title }
+  = theme_partial 'comments'
+
+%aside#sidebar
+  = theme_partial 'branding'
+  .intro= theme_partial 'intro'

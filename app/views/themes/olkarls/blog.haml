@@ -1,0 +1,19 @@
+= theme_partial 'breadcrumb'
+%section#content
+  ~ @page.to_html
+
+  - latest = @page.articles.shift
+  - if latest
+    %h5 The latest
+    = theme_partial 'summary', :locals => { :article => latest, :heading => :h2 }
+
+  - unless @page.articles.empty?
+    %h5 Recent articles
+    %ul.recent
+      - @page.articles[0..9].each do |article|
+        %li= link_to(article.heading, article.abspath)
+    %p.read-more= link_to "Full archives", "/blog/archives"
+
+%aside#sidebar
+  = theme_partial 'branding'
+  .intro= theme_partial 'intro'

@@ -1,0 +1,17 @@
+= theme_partial 'breadcrumb'
+%section#content
+  ~ @page.to_html
+  
+  - if @page.parent and archives = @page.parent.articles
+    - archives = archives.group_by{|article| article.date.year }
+    - archives.map.reverse.each do |year, articles|
+      %h5= year
+      - unless articles.empty?
+        %ul.archives
+          - articles.each do |article|
+            %li= link_to article.heading, article.abspath
+        
+
+%aside#sidebar
+  = theme_partial 'branding'
+  .intro= theme_partial 'intro'

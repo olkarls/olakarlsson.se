@@ -1,0 +1,22 @@
+= theme_partial "breadcrumb"
+
+%section#content
+  - if @page.metadata.repo
+    - repo = Octopussy.repo(@page.metadata.repo) rescue nil
+    - gem_stats = GC_Stats::Lookup.info((@page.metadata.rubygem || @page.heading.downcase.gsub(' ', ''))) rescue nil
+    - if repo
+      %ul.project-links
+        %li= source_link(@page.metadata.repo)
+        - if File.exists?(Padrino.root("public/projects/#{@page.heading.downcase.gsub(' ', '_')}/api/index.html"))
+          %li= docs_link(@page.heading)
+        %li= watchers_link(@page.metadata.repo, repo.watchers)
+        %li= forks_link(@page.metadata.repo, repo.forks)
+        - if gem_stats
+          %li= gem_link(gem_stats)
+          
+  ~ @page.to_html
+
+
+%aside#sidebar
+  = theme_partial 'branding'
+  .intro= theme_partial 'intro'

@@ -8,6 +8,8 @@ gem "builder", "2.1.2"
 gem "rdiscount", "1.5.8"
 gem "RedCloth", "4.2.2"
 gem "hashie", "~> 0.2.0"
+gem "rack-codehighlighter", "~> 0.4.6"
+gem 'coderay'
 
 # Component requirements
 gem 'haml'

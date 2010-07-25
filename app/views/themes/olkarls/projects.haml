@@ -1,0 +1,15 @@
+= theme_partial 'breadcrumb'
+%section#content
+  ~ @page.to_html
+
+  - unless @page.pages.empty?
+    %ul.projects
+      - @page.pages.each do |page|
+        %li{:id => page.heading.downcase.split(' '), :class => page.heading.downcase.gsub(' ', '-') }
+          %a{:href => page.abspath}
+            %strong.project-name= page.heading
+            = page.summary
+
+%aside#sidebar
+  = theme_partial 'branding'
+  .intro= theme_partial 'intro'

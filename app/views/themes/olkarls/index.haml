@@ -1,0 +1,15 @@
+.impact
+  index.haml
+    
+- content_for :middle do
+  .intro= theme_partial 'intro'
+
+  
+  
+- if false
+  %aside
+    %h3 Latest headlines
+    %ul
+      - @articles.each do |article|
+        %li
+          %a{ :href => article.abspath }= article.heading
