@@ -1,7 +1,6 @@
 # Helper methods defined here can be accessed in any controller or view in the application
 
 Presto.helpers do
-  
   def body_classes
     classes = []
     classes << 'home' if request.path == "/"
@@ -50,5 +49,4 @@ Presto.helpers do
   def format_date(date)
     date.strftime("%d %B %Y")
   end
-  
 end

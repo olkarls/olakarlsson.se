@@ -1,17 +1,29 @@
+$background:        #262B32
+$color:             #C3C3C3
+$link_color:        #9DC879
+$link_hover_color:  #768D5D
+$heading_color:     #85B8E0
+
+@import 'code'
+
 section, article, aside, header, footer, nav, dialog, figure
   display: block
   
 body 
   width: 760px 
   margin: 15px auto
-  font-family: Arial, "MS Trebuchet", sans-serif
-  font-size: 13px
+  font-family: arial, sans-serif
+  font-size: 14px
+  background-color: $background
+  color: $color
+  
+h1, h2, h3, h4
+  color: $heading_color
 
 h1
   font-size: 28px
 
 h2
-  text-transform: uppercase
   font-size: 23px
 
 p
@@ -19,7 +31,24 @@ p
 
 p, li
   line-height: 20px
+  
+a
+  color: $link_color
+  text-decoration: none
 
+a:visited
+  color: $link_hover_color
+  
+a:hover
+  border-bottom: solid 1px $link_color
+
+a:active
+  color: $link_hover_color
+  border-bottom: solid 2px $link_hover_color
+  
+nav a:visited, .breadcrumb a:visited
+  color: $link_color
+  
 header#identity
   width: 100%
 

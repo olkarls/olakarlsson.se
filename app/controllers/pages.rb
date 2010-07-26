@@ -1,6 +1,4 @@
 Presto.controllers :pages do
-
-  
   before do
     @menu_items = Page.menu_items
     @title = Nesta::Config.title
@@ -10,7 +8,6 @@ Presto.controllers :pages do
     @author = Nesta::Config.author
     @google_analytics_code = Nesta::Config.google_analytics_code
     @heading = @title
-    
   end
 
   get :index, :map => '/' do
@@ -50,6 +47,4 @@ Presto.controllers :pages do
     @keywords = @page.keywords
     render "themes/#{Nesta::Config.theme}/#{@page.template}", :layout => @page.layout
   end
-  
-
 end
